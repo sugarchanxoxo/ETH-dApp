@@ -19,7 +19,7 @@ const App = () => {
   console.log("currentAccount: ", currentAccount);
 
   // デプロイされたコントラクトのアドレスを保持する変数を作成（terminalでyarn contract deploy後のcontract deployed toから取得）
-  const contractAddress = "0x2A8C4aB34BC7Af30dcB3abb46B41B3d28b2f5962";
+  const contractAddress = "0x431a6F1c3f367E31DF59AC10679b6fd2b32d3d21";
 
   // ABIの内容を参照する変数を作成
   const contractABI = abi.abi;
@@ -27,7 +27,7 @@ const App = () => {
 
   const getAllWaves = async () => {
     const { ethereum } = window;
-  
+
     try {
       if (ethereum) {
         const provider = new ethers.providers.Web3Provider(ethereum);
@@ -47,7 +47,7 @@ const App = () => {
             message: wave.message,
           };
         });
-  
+
         /* React Stateにデータを格納する */
         setAllWaves(wavesCleaned);
       } else {
@@ -57,13 +57,13 @@ const App = () => {
       console.log(error);
     }
   };
-  
+
   /**
    * `emit`されたイベントに反応する
    */
   useEffect(() => {
     let wavePortalContract;
-  
+
     const onNewWave = (from, timestamp, message) => {
       console.log("NewWave", from, timestamp, message);
       setAllWaves((prevState) => [
@@ -75,12 +75,12 @@ const App = () => {
         },
       ]);
     };
-  
+
     /* NewWaveイベントがコントラクトから発信されたときに、情報を受け取ります */
     if (window.ethereum) {
       const provider = new ethers.providers.Web3Provider(window.ethereum);
       const signer = provider.getSigner();
-  
+
       wavePortalContract = new ethers.Contract(
         contractAddress,
         contractABI,
@@ -88,7 +88,7 @@ const App = () => {
       );
       wavePortalContract.on("NewWave", onNewWave);
     }
-  
+
     /*メモリリークを防ぐために、NewWaveのイベントを解除します*/
     return () => {
       if (wavePortalContract) {
@@ -176,7 +176,7 @@ const App = () => {
   useEffect(() => {
     checkIfWalletIsConnected();
   }, []);
-  
+
   return (
     <div className="mainContainer">
       <div className="dataContainer">
