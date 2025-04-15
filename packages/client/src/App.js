@@ -19,7 +19,7 @@ const App = () => {
   console.log("currentAccount: ", currentAccount);
 
   // デプロイされたコントラクトのアドレスを保持する変数を作成（terminalでyarn contract deploy後のcontract deployed toから取得）
-  const contractAddress = "0x431a6F1c3f367E31DF59AC10679b6fd2b32d3d21";
+  const contractAddress = "0x688074792512D89fe0Bb9BbF7A8660FCDbA4FDFd";
 
   // ABIの内容を参照する変数を作成
   const contractABI = abi.abi;
