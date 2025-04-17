@@ -38,7 +38,7 @@ contract WavePortal {
     function wave(string memory _message) public {
         // [スパム防止]waveを送る間隔は15分開けなければいけない
         require(
-            lastWavedAt[msg.sender] + 15 minutes < block.timestamp,
+            lastWavedAt[msg.sender] + 30 seconds < block.timestamp,
             "Wait 15m"
         );
 
@@ -68,7 +68,7 @@ contract WavePortal {
             /*
              * ユーザーにETHを送るためのコードは以前と同じ
              */
-            uint256 prizeAmount = 0.0001 ether;
+            uint256 prizeAmount = 0.0005 ether;
             require(
                 prizeAmount <= address(this).balance,
                 "Trying to withdraw more money than the contract has."
