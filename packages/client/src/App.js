@@ -175,8 +175,10 @@ const App = () => {
         if (contractBalancePost.lt(contractBalance)) {
           /* 減っていたら下記を出力 */
           console.log("User won ETH!");
+          alert("🎉 おめでとうございます！ETHが当たりました！");
         } else {
           console.log("User didn't win ETH.");
+          alert("😊 ありがとうございます！今回は残念でしたが、また挑戦してください！");
         }
         console.log(
           "Contract balance after wave:",
