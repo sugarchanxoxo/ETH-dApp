@@ -210,8 +210,8 @@ const App = () => {
             👋
           </span>
           を送ってください
-          <span role="img" aria-label="shine">
-            ✨
+          <span role="img" aria-label="rabbit">
+            🐰
           </span>
         </div>
         <br />
@@ -250,11 +250,7 @@ const App = () => {
               return (
                 <div
                   key={index}
-                  style={{
-                    backgroundColor: "#F8F8FF",
-                    marginTop: "16px",
-                    padding: "8px",
-                  }}
+                  className="wave-card"
                 >
                   <div>Address: {wave.address}</div>
                   <div>Time: {wave.timestamp.toString()}</div>
